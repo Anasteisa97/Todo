@@ -1,32 +1,32 @@
-import React, { FC, useState } from "react";
-import { TodoItem, Status } from "../types";
-
-type AddInputProps = {
-  addTodo: (newTodo: TodoItem) => void;
-};
+import React, { ChangeEvent, FC, useState } from "react";
+import { AddInputProps, Status } from "../../types";
+import { nanoid } from "nanoid";
 
 const AddInput: FC<AddInputProps> = ({ addTodo }) => {
   const [name, setName] = useState("");
 
-  const handleClick = () => {
+  const onAddTodo = () => {
     if (name.trim()) {
       addTodo({
-        id: Date.now(),
+        id: nanoid(),
         name,
         status: Status.Pending,
       });
       setName("");
     }
   };
+  const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
   return (
     <div className="add-todo">
       <input
         type="text"
         value={name}
-        onChange={(e) => setName(e.target.value)}
+        onChange={onChangeName}
         placeholder="add todo"
       />
-      <button onClick={() => handleClick()}>ADD</button>
+      <button onClick={() => onAddTodo()}>ADD</button>
     </div>
   );
 };

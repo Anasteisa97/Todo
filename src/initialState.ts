@@ -1,18 +1,19 @@
-import { Status, TodoItem } from "./types";
+import { Status, TodoItemType } from "./types";
+import { nanoid } from "nanoid";
 
-export const initialTodos: TodoItem[] = [
+export const initialTodos: TodoItemType[] = [
   {
-    id: 1,
+    id: nanoid(),
     name: "todo 1",
     status: Status.InProgress,
   },
   {
-    id: 2,
+    id: nanoid(),
     name: "todo 2",
     status: Status.Pending,
   },
   {
-    id: 3,
+    id: nanoid(),
     name: "todo 32",
     status: Status.Done,
   },

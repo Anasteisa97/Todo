@@ -1,17 +1,17 @@
 import React, { FC } from "react";
-import { TodoItem, TodoItemHandles } from "../types";
-import ListItem from "./ListItem";
+import { TodoItemType, TodoItemHandlers } from "../../types";
+import TodoItem from "./TodoItem";
 
-type ListProps = TodoItemHandles & {
-  todos: TodoItem[];
+type TodoListListProps = TodoItemHandlers & {
+  todos: TodoItemType[];
 };
 
-const List: FC<ListProps> = ({ todos, ...props }) => {
+const TodoList: FC<TodoListListProps> = ({ todos, ...props }) => {
   return (
     <div className="list">
       {todos.map((todo) => {
         return (
-          <ListItem
+          <TodoItem
             key={todo.id}
             name={todo.name}
             id={todo.id}
@@ -24,4 +24,4 @@ const List: FC<ListProps> = ({ todos, ...props }) => {
   );
 };
 
-export default List;
+export default TodoList;

@@ -6,13 +6,22 @@ export enum Status {
   Done,
 }
 
-export type TodoItem = {
-  id: number;
+export type TodoItemType = {
+  id: string;
   name: string;
   status: Status;
 };
 
-export type TodoItemHandles = {
-  deleteTodo: (id: number) => void;
-  setCurrentTodoID: Dispatch<SetStateAction<null | number>>;
+export type TodoItemHandlers = {
+  deleteTodo: (id: string) => void;
+  setCurrentTodoID: Dispatch<SetStateAction<null | string>>;
+};
+
+export type SearchProps = {
+  searchStr: string;
+  setSearchStr: Dispatch<SetStateAction<string>>;
+};
+
+export type AddInputProps = {
+  addTodo: (newTodo: TodoItemType) => void;
 };
